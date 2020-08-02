@@ -1,3 +1,4 @@
 package com.upai.smartneib.util
 
-val baseUrl = "http://192.168.2.103:8080/smart-neib/register"
+val testUrl = "http://locallhost:8080/smart-neib/"
+val baseUrl = "http://39.108.96.235:8080/smart-neib/"
