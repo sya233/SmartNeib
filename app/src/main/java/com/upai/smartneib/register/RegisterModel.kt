@@ -1,7 +1,6 @@
 package com.upai.smartneib.register
 
 import com.upai.smartneib.util.baseUrl
-import com.upai.smartneib.util.testUrl
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request

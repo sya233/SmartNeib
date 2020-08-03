@@ -17,8 +17,13 @@ class LoginPresenter(private val loginView: LoginView, private val loginModel: L
                 if (response != null) {
                     val json: String? = response.body()?.string()
                     val loginResult: LoginResult = Gson().fromJson(json, LoginResult::class.java)
-                    loginView.showToast(loginResult.result)
-                    loginView.toMainActivity()
+                    when (loginResult.result) {
+                        "登录成功!" -> {
+                            loginView.showToast(loginResult.result)
+                            loginView.toMainActivity()
+                        }
+                        else -> loginView.showToast(loginResult.result)
+                    }
                 }
             }
 
