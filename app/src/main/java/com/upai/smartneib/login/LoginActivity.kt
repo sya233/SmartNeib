@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         loginPresenter = LoginPresenter(this, LoginModel())
         // ActionBar, Toolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle("登录")
+        supportActionBar?.title = "登录"
     }
 
     private fun respondToClick() {

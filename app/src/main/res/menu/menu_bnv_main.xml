@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_notification"
+        android:icon="@drawable/notification"
+        android:title="@string/notification" />
+
+    <item
+        android:id="@+id/menu_service"
+        android:icon="@drawable/service"
+        android:title="@string/service" />
+
+    <item
+        android:id="@+id/menu_forum"
+        android:icon="@drawable/forum"
+        android:title="@string/forum" />
+    <item
+        android:id="@+id/menu_mine"
+        android:icon="@drawable/mine"
+        android:title="@string/mine" />
+</menu>
