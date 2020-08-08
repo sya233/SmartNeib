@@ -1,6 +1,8 @@
 package com.upai.smartneib.login
 
+import android.content.Context
 import com.google.gson.Gson
+import com.upai.smartneib.util.SharedPreferenceUtil
 import okhttp3.Call
 import okhttp3.Response
 import java.io.IOException
@@ -19,8 +21,9 @@ class LoginPresenter(private val loginView: LoginView, private val loginModel: L
                     val loginResult: LoginResult = Gson().fromJson(json, LoginResult::class.java)
                     when (loginResult.result) {
                         "登录成功!" -> {
-                            loginView.showToast(loginResult.result)
+                            SharedPreferenceUtil.saveUserAndPass(loginView as Context, user, pass)
                             loginView.toMainActivity()
+                            loginView.finishThisActivity()
                         }
                         else -> loginView.showToast(loginResult.result)
                     }

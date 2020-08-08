@@ -8,4 +8,6 @@ interface LoginView {
 
     fun showToast(msg: String)
 
+    fun finishThisActivity()
+
 }
