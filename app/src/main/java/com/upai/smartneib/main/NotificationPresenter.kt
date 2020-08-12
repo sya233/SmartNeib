@@ -13,7 +13,6 @@ class NotificationPresenter(
 ) {
 
     fun getNotificationList() {
-        notificationView.showProgress()
         notificationModel.getNotificationList(object : Callback {
             override fun onFailure(call: Call?, e: IOException?) {
                 notificationView.showToast("未知错误$e")
@@ -21,11 +20,31 @@ class NotificationPresenter(
 
             override fun onResponse(call: Call?, response: Response?) {
                 if (response != null) {
-                    notificationView.hideProgress()
                     val json: String? = response.body()?.string()
                     val result: NotificationResult =
                         Gson().fromJson(json, NotificationResult::class.java)
                     notificationView.updateRecyclerView(result.notification)
+                }
+            }
+
+        })
+    }
+
+    // 刷新
+    fun refreshRecyclerView() {
+        notificationModel.getNotificationList(object : Callback {
+            override fun onFailure(call: Call?, e: IOException?) {
+                notificationView.showToast("未知错误$e")
+            }
+
+            override fun onResponse(call: Call?, response: Response?) {
+                if (response != null) {
+                    val json: String? = response.body()?.string()
+                    val result: NotificationResult =
+                        Gson().fromJson(json, NotificationResult::class.java)
+                    notificationView.updateRecyclerView(result.notification)
+                    notificationView.finishRefresh()
+                    notificationView.showToast("刷新完成")
                 }
             }
 

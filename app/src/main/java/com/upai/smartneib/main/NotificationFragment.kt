@@ -34,8 +34,8 @@ class NotificationFragment : Fragment(), NotificationView {
     ): View? {
         notificationView = inflater.inflate(R.layout.fragment_notification, container, false)
         init()
-        // 获取通知列表
-        notificationPresenter.getNotificationList()
+        // 刷新
+        respondToRefresh()
         return notificationView
     }
 
@@ -48,17 +48,13 @@ class NotificationFragment : Fragment(), NotificationView {
         notificationView.rv_notification.layoutManager =
             LinearLayoutManager(notificationView.rv_notification.context)
         notificationView.rv_notification.adapter = adapter
+        // 获取通知列表
+        notificationPresenter.getNotificationList()
     }
 
-    override fun showProgress() {
-        (activity as MainActivity).runOnUiThread {
-            notificationView.pb_notification.visibility = View.VISIBLE
-        }
-    }
-
-    override fun hideProgress() {
-        (activity as MainActivity).runOnUiThread {
-            notificationView.pb_notification.visibility = View.GONE
+    private fun respondToRefresh() {
+        notificationView.srl_notification.setOnRefreshListener {
+            notificationPresenter.refreshRecyclerView()
         }
     }
 
@@ -72,6 +68,12 @@ class NotificationFragment : Fragment(), NotificationView {
         activity?.runOnUiThread {
             adapter.updateList(list)
             adapter.notifyDataSetChanged()
+        }
+    }
+
+    override fun finishRefresh() {
+        activity?.runOnUiThread {
+            notificationView.srl_notification.finishRefresh()
         }
     }
 
