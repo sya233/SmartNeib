@@ -10,4 +10,6 @@
     <string name="forum">论坛</string>
     <string name="mine">我</string>
     <string name="login_success">登录成功</string>
+    <string name="username">用户名</string>
+    <string name="nothing"> </string>
 </resources>

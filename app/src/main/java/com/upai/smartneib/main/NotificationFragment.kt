@@ -1,5 +1,6 @@
 package com.upai.smartneib.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.upai.smartneib.R
+import com.upai.smartneib.notification_detail.NotificationDetailActivity
 import kotlinx.android.synthetic.main.fragment_notification.*
 import kotlinx.android.synthetic.main.fragment_notification.view.*
 import kotlinx.android.synthetic.main.rv_item_notification.view.*
@@ -95,6 +97,17 @@ class NotificationFragment : Fragment(), NotificationView {
         override fun onBindViewHolder(holder: Holder, position: Int) {
             holder.itemView.tv_title.text = notificationList[position].title
             holder.itemView.tv_des.text = notificationList[position].des
+            // RecyclerView item click
+            holder.itemView.setOnClickListener {
+                holder.itemView.context.startActivity(
+                    NotificationDetailActivity.getIntent(
+                        holder.itemView.context,
+                        notificationList[position].id,
+                        notificationList[position].title,
+                        notificationList[position].content
+                    )
+                )
+            }
         }
 
         class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
