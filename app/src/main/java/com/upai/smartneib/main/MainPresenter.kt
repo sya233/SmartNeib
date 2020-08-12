@@ -24,7 +24,7 @@ class MainPresenter(private val mainView: MainView, private val mainModel: MainM
                     if (TextUtils.isEmpty(result.url)) {
                         mainView.showToast(result.result)
                     } else {
-                        mainView.showToast(result.result + "下载地址: ${result.url}")
+//                        mainView.showToast(result.result + "下载地址: ${result.url}")
                     }
                 }
             }

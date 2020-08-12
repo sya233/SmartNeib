@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), MainView {
     private fun init() {
         // ActionBar, Toolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.title = resources.getString(R.string.login_success)
+        setActionTitle(resources.getString(R.string.notification))
         // Presenter
         mainPresenter = MainPresenter(this, MainModel())
         // ViewPager
@@ -40,15 +40,29 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     private fun respondToClick() {
+        // BottomNavigationView
         bnv_main.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.menu_notification -> vp_main.currentItem = 0
-                R.id.menu_service -> vp_main.currentItem = 1
-                R.id.menu_forum -> vp_main.currentItem = 2
-                R.id.menu_mine -> vp_main.currentItem = 3
+                R.id.menu_notification -> {
+                    setActionTitle(resources.getString(R.string.notification))
+                    vp_main.currentItem = 0
+                }
+                R.id.menu_service -> {
+                    setActionTitle(resources.getString(R.string.service))
+                    vp_main.currentItem = 1
+                }
+                R.id.menu_forum -> {
+                    setActionTitle(resources.getString(R.string.forum))
+                    vp_main.currentItem = 2
+                }
+                R.id.menu_mine -> {
+                    setActionTitle(resources.getString(R.string.mine))
+                    vp_main.currentItem = 3
+                }
             }
             return@setOnNavigationItemSelectedListener true
         }
+        // ViewPager
         vp_main.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
 
@@ -64,10 +78,22 @@ class MainActivity : AppCompatActivity(), MainView {
 
             override fun onPageSelected(position: Int) {
                 when (position) {
-                    0 -> bnv_main.menu.findItem(R.id.menu_notification).isChecked = true
-                    1 -> bnv_main.menu.findItem(R.id.menu_service).isChecked = true
-                    2 -> bnv_main.menu.findItem(R.id.menu_forum).isChecked = true
-                    3 -> bnv_main.menu.findItem(R.id.menu_mine).isChecked = true
+                    0 -> {
+                        setActionTitle(resources.getString(R.string.notification))
+                        bnv_main.menu.findItem(R.id.menu_notification).isChecked = true
+                    }
+                    1 -> {
+                        setActionTitle(resources.getString(R.string.service))
+                        bnv_main.menu.findItem(R.id.menu_service).isChecked = true
+                    }
+                    2 -> {
+                        setActionTitle(resources.getString(R.string.forum))
+                        bnv_main.menu.findItem(R.id.menu_forum).isChecked = true
+                    }
+                    3 -> {
+                        setActionTitle(resources.getString(R.string.mine))
+                        bnv_main.menu.findItem(R.id.menu_mine).isChecked = true
+                    }
                 }
             }
 
@@ -83,6 +109,12 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun showToast(msg: String) {
         runOnUiThread {
             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun setActionTitle(title: String) {
+        runOnUiThread {
+            supportActionBar?.title = title
         }
     }
 

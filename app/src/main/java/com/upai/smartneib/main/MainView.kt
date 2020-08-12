@@ -4,4 +4,6 @@ interface MainView {
 
     fun showToast(msg: String)
 
+    fun setActionTitle(title: String)
+
 }
