@@ -11,5 +11,17 @@
     <string name="mine">我</string>
     <string name="login_success">登录成功</string>
     <string name="username">用户名</string>
+    <string name="repair">报修</string>
+    <string name="payment">缴费</string>
+    <string name="ask">咨询</string>
+    <string name="unhappy">投诉</string>
+    <string name="contact">联系人</string>
+    <string name="phone_number">手机号</string>
+    <string name="address">地&#160;&#160;&#160;&#160;址</string>
+    <string name="input_name">输入您的姓名</string>
+    <string name="input_phone">输入您的手机号</string>
+    <string name="input_location">输入您的地址</string>
+    <string name="input_bad">请描述故障信息</string>
+    <string name="ok">确定</string>
     <string name="nothing"> </string>
 </resources>

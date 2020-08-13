@@ -25,6 +25,9 @@
         <activity android:name=".register.RegisterActivity" />
         <activity android:name=".main.MainActivity" />
         <activity android:name=".notification_detail.NotificationDetailActivity" />
+        <activity
+            android:name=".repair.RepairActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
     </application>
 
 </manifest>
