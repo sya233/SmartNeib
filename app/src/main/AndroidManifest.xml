@@ -4,6 +4,8 @@
     package="com.upai.smartneib">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:fullBackupContent="false"
@@ -28,6 +30,7 @@
         <activity
             android:name=".repair.RepairActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity android:name=".order.OrderActivity" />
     </application>
 
 </manifest>

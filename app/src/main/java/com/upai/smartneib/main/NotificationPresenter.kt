@@ -44,7 +44,6 @@ class NotificationPresenter(
                         Gson().fromJson(json, NotificationResult::class.java)
                     notificationView.updateRecyclerView(result.notification)
                     notificationView.finishRefresh()
-                    notificationView.showToast("刷新完成")
                 }
             }
 

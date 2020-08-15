@@ -16,7 +16,6 @@ class RegisterPresenter(
         registerModel.registerUser(user, pass, email, object : Callback {
             override fun onFailure(call: Call?, e: IOException?) {
                 registerView.showToast("未知错误$e")
-                Log.d("RegisterP", "错误信息: " + e)
             }
 
             override fun onResponse(call: Call?, response: Response?) {

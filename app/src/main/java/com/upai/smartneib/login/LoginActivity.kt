@@ -2,8 +2,10 @@ package com.upai.smartneib.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Message
 import android.text.TextUtils
 import android.widget.Toast
+import com.alipay.sdk.app.PayTask
 import com.upai.smartneib.R
 import com.upai.smartneib.main.MainActivity
 import com.upai.smartneib.register.RegisterActivity
