@@ -5,8 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Html
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
+import androidx.core.widget.NestedScrollView
 import com.upai.smartneib.R
 import kotlinx.android.synthetic.main.activity_notification_detail.*
 import kotlinx.android.synthetic.main.common_toolbar.*
@@ -18,6 +20,8 @@ class NotificationDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_notification_detail)
         // 初始化
         init()
+        // 点击事件
+        respondToClick()
     }
 
     private fun init() {
@@ -31,6 +35,17 @@ class NotificationDetailActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = resources.getString(R.string.nothing)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun respondToClick() {
+        val title = intent.getStringExtra("title")
+        nsv_notification_detail.setOnScrollChangeListener { v: NestedScrollView?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int ->
+            if (scrollY > oldScrollY) {
+                supportActionBar?.title = title
+            } else if (scrollY < oldScrollY && scrollY == 0) {
+                supportActionBar?.title = resources.getString(R.string.nothing)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
